@@ -1,0 +1,32 @@
+﻿@model EmployeeTasks
+
+<form method="post" asp-action="DeletePOST">
+    <input asp-for="Id" hidden />
+    <div class="border p-2 mt-3">
+        <div class="row pb-2">
+            <h2 class="text-primary">Delete Task</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="TaskName">Task</label>
+            <input asp-for="TaskName" class="form-control" disabled/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="TaskDescription">Description</label>
+            <input asp-for="TaskDescription" class="form-control" disabled/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="TaskDate">Creation Date</label>
+            <input asp-for="TaskDate" class="form-control" readonly/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Status" class="form-control"></label>
+            <select asp-for="Status" class="form-control" asp-items="Html.GetEnumSelectList<IsComplete>()" disabled>
+                <option>Select Status</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-danger" stlye="width:150px">Delete</button>
+        <a asp-controller="EmployeeTasks" asp-action="Index" class="btn btn-secondary" style="width:150px">Return to Tasks</a>
+    </div>
+</form>
+
