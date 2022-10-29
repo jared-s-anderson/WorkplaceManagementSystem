@@ -13,5 +13,6 @@ namespace WorkplaceManagementSystem.Data
 
         public DbSet<EmployeeTasks> Tasks { get; set; }
         public DbSet<EmployeeInfo> Info { get; set; }
+        public DbSet<Rewards> Rewards { get; set; }
     }
 }
