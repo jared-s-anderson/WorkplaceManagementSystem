@@ -1,0 +1,37 @@
+﻿@model EmployeeInfo
+
+<form method="post" asp-action="DeletePOST">
+    <input asp-for="Id" hidden />
+    <div class="border p-2 mt-3">
+        <div class="row pb-2">
+            <h2 class="text-primary">Remove Employee</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name">Name</label>
+            <input asp-for="Name" class="form-control" disabled />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" class="form-control" disabled />
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneNumber">Phone Number</label>
+            <input asp-for="PhoneNumber" class="form-control" disabled />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Address">Home Address</label>
+            <input asp-for="Address" class="form-control" disabled />
+        </div>
+        <div class="mb-3">
+            <label asp-for="YearsAtWork">Company Years</label>
+            <input asp-for="YearsAtWork" class="form-control" disabled />
+        </div>
+        <div class="mb-3">
+            <label asp-for="TasksCompleted">Completed Tasks</label>
+            <input asp-for="TasksCompleted" class="form-control" disabled />
+        </div>
+        <button type="submit" class="btn btn-danger" stlye="width:150px">Remove Employee</button>
+        <a asp-controller="EmployeeInfo" asp-action="Index" class="btn btn-secondary" style="width:150px">Return to Employee Info</a>
+    </div>
+</form>

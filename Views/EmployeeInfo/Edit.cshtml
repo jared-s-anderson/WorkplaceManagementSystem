@@ -1,0 +1,43 @@
+﻿@model EmployeeInfo
+
+<form method="post">
+    <div class="border p-2 mt-3">
+        <div class="row pb-2">
+            <h2 class="text-primary">Update Employee Info</h2>
+            <hr />
+            <div asp-validation-summary="All"></div>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name">Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneNumber">Phone Number</label>
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Address">Home Address</label>
+            <input asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="YearsAtWork">Company Years</label>
+            <input asp-for="YearsAtWork" class="form-control" />
+            <span asp-validation-for="YearsAtWork" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="TasksCompleted">Completed Tasks</label>
+            <input asp-for="TasksCompleted" class="form-control" />
+            <span asp-validation-for="TasksCompleted" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" stlye="width:150px">Update</button>
+        <a asp-controller="EmployeeInfo" asp-action="Index" class="btn btn-secondary" style="width:150px">Return to Employee Info</a>
+    </div>
+</form>
