@@ -7,16 +7,35 @@
             <hr />
             <div asp-validation-summary="All"></div>
         </div>
-        <div class="mb-3">
-            <label asp-for="TaskName">Task</label>
-            <input asp-for="TaskName" class="form-control"/>
-            <span asp-validation-for="TaskName" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="TaskDescription">Description</label>
-            <input asp-for="TaskDescription" class="form-control" />
-            <span asp-validation-for="TaskDescription" class="text-danger"></span>
-        </div>
+        @if (User.IsInRole("Administrator"))
+        {
+            <div class="mb-3">
+                <label asp-for="TaskName">Task</label>
+                <input asp-for="TaskName" class="form-control"/>
+                <span asp-validation-for="TaskName" class="text-danger"></span>
+            </div>
+        } else 
+        {
+            <div class="mb-3">
+                <label asp-for="TaskName">Task</label>
+                <input asp-for="TaskName" class="form-control" readonly/>
+                <span asp-validation-for="TaskName" class="text-danger"></span>
+            </div>
+        }
+        @if (User.IsInRole("Administrator"))
+        {
+            <div class="mb-3">
+                <label asp-for="TaskDescription">Description</label>
+                <input asp-for="TaskDescription" class="form-control" />
+                <span asp-validation-for="TaskDescription" class="text-danger"></span>
+            </div>
+        } else {
+            <div class="mb-3">
+                <label asp-for="TaskDescription">Description</label>
+                <input asp-for="TaskDescription" class="form-control" readonly/>
+                <span asp-validation-for="TaskDescription" class="text-danger"></span>
+            </div>
+        }
         <div class="mb-3">
             <label asp-for="TaskDate">Creation Date</label>
             <input asp-for="TaskDate" class="form-control" disabled/>

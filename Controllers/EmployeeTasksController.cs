@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using WorkplaceManagementSystem.Data;
 using WorkplaceManagementSystem.Models;
 
@@ -12,6 +14,8 @@ namespace WorkplaceManagementSystem.Controllers
         {
             _db = db;
         }
+
+        [Authorize(Roles = "Administrator, Employee")]
         public IActionResult Index()
         {
             IEnumerable<EmployeeTasks> taskListObject = _db.Tasks;
@@ -19,6 +23,7 @@ namespace WorkplaceManagementSystem.Controllers
         }
 
         // GET
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
@@ -27,6 +32,7 @@ namespace WorkplaceManagementSystem.Controllers
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create(EmployeeTasks taskObject)
         {
             if (taskObject.TaskName == taskObject.TaskDescription)
@@ -46,6 +52,7 @@ namespace WorkplaceManagementSystem.Controllers
         }
 
         // GET
+        [Authorize(Roles = "Administrator, Employee")]
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0)
@@ -65,6 +72,7 @@ namespace WorkplaceManagementSystem.Controllers
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator, Employee")]
         public IActionResult Edit(EmployeeTasks taskObject)
         {
             if (taskObject.TaskName == taskObject.TaskDescription)
@@ -76,6 +84,7 @@ namespace WorkplaceManagementSystem.Controllers
             if (ModelState.IsValid)
             {
                 _db.Tasks.Update(taskObject);
+                _db.Entry(taskObject).Property(x => x.TaskDate).IsModified = false;
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -85,6 +94,7 @@ namespace WorkplaceManagementSystem.Controllers
 
 
         // GET
+        [Authorize(Roles = "Administrator")]
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
@@ -104,6 +114,7 @@ namespace WorkplaceManagementSystem.Controllers
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public IActionResult DeletePOST(int? id)
         {
             var taskFromDatabase = _db.Tasks.Find(id);

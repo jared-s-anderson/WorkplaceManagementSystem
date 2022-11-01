@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using WorkplaceManagementSystem.Data;
 using WorkplaceManagementSystem.Models;
 
@@ -13,6 +15,7 @@ namespace WorkplaceManagementSystem.Controllers
             _db = db;
         }
 
+        [Authorize(Roles = "Administrator")]
         public IActionResult Index()
         {
             IEnumerable<Rewards> rewards = _db.Rewards;
@@ -20,6 +23,7 @@ namespace WorkplaceManagementSystem.Controllers
         }
 
         // GET
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
@@ -28,6 +32,7 @@ namespace WorkplaceManagementSystem.Controllers
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create(Rewards rewardObject)
         {
 
@@ -42,6 +47,7 @@ namespace WorkplaceManagementSystem.Controllers
         }
 
         // GET
+        [Authorize(Roles = "Administrator")]
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0)
@@ -61,6 +67,7 @@ namespace WorkplaceManagementSystem.Controllers
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Edit(Rewards rewardObject)
         {
             if (rewardObject.Reward == rewardObject.RewardDescription)
@@ -80,6 +87,7 @@ namespace WorkplaceManagementSystem.Controllers
         }
 
         // GET
+        [Authorize(Roles = "Administrator")]
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
@@ -99,6 +107,7 @@ namespace WorkplaceManagementSystem.Controllers
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public IActionResult DeletePOST(int? id)
         {
             var rewardFromDatabase = _db.Rewards.Find(id);

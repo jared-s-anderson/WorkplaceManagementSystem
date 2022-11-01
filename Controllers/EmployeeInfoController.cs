@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WorkplaceManagementSystem.Data;
 using WorkplaceManagementSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WorkplaceManagementSystem.Controllers
 {
@@ -12,6 +13,8 @@ namespace WorkplaceManagementSystem.Controllers
         {
             _db = db;
         }
+
+        [Authorize(Roles = "Administrator")]
         public IActionResult Index()
         {
             IEnumerable<EmployeeInfo> InfoList = _db.Info;
@@ -19,6 +22,7 @@ namespace WorkplaceManagementSystem.Controllers
         }
 
         // GET
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
@@ -27,6 +31,7 @@ namespace WorkplaceManagementSystem.Controllers
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create(EmployeeInfo infoObject)
         {
             if (ModelState.IsValid)
@@ -40,6 +45,7 @@ namespace WorkplaceManagementSystem.Controllers
         }
 
         // GET
+        [Authorize(Roles = "Administrator")]
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0)
@@ -59,6 +65,7 @@ namespace WorkplaceManagementSystem.Controllers
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Edit(EmployeeInfo infoObject)
         {
 
@@ -73,6 +80,7 @@ namespace WorkplaceManagementSystem.Controllers
         }
 
         // GET
+        [Authorize(Roles = "Administrator")]
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
@@ -92,6 +100,7 @@ namespace WorkplaceManagementSystem.Controllers
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public IActionResult DeletePOST(int? id)
         {
             var infoFromDatabase = _db.Info.Find(id);
