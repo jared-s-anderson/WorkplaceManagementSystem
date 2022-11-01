@@ -1,0 +1,23 @@
+﻿@model Rewards
+
+<form method="post" asp-action="DeletePOST">
+    <input asp-for="Id" hidden />
+    <div class="border p-2 mt-3">
+        <div class="row pb-2">
+            <h2 class="text-primary">Delete Reward</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Reward">Reward</label>
+            <input asp-for="Reward" class="form-control" disabled />
+        </div>
+        <div class="mb-3">
+            <label asp-for="RewardDescription">Description</label>
+            <input asp-for="RewardDescription" class="form-control" disabled />
+        </div>
+        <button type="submit" class="btn btn-danger" stlye="width:150px">Delete</button>
+        <a asp-controller="Rewards" asp-action="Index" class="btn btn-secondary" style="width:150px">Return to Tasks</a>
+    </div>
+</form>
+
+

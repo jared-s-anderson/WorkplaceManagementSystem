@@ -1,0 +1,24 @@
+﻿@model Rewards
+
+<form method="post">
+    <div class="border p-2 mt-3">
+        <div class="row pb-2">
+            <h2 class="text-primary">Update Reward</h2>
+            <hr />
+            <div asp-validation-summary="All"></div>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Reward">Reward</label>
+            <input asp-for="Reward" class="form-control" />
+            <span asp-validation-for="Reward" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="RewardDescription">Description</label>
+            <input asp-for="RewardDescription" class="form-control" />
+            <span asp-validation-for="RewardDescription" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" stlye="width:150px">Update</button>
+        <a asp-controller="Rewards" asp-action="Index" class="btn btn-secondary" style="width:150px">Return to Tasks</a>
+    </div>
+</form>
+
