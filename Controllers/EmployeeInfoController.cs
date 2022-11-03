@@ -38,6 +38,7 @@ namespace WorkplaceManagementSystem.Controllers
             {
                 _db.Info.Add(infoObject);
                 _db.SaveChanges();
+                TempData["success"] = "Employee Info Added Successfully";
                 return RedirectToAction("Index");
             }
 
@@ -73,6 +74,7 @@ namespace WorkplaceManagementSystem.Controllers
             {
                 _db.Info.Update(infoObject);
                 _db.SaveChanges();
+                TempData["success"] = "Employee Info Updated Successfully";
                 return RedirectToAction("Index");
             }
 
@@ -111,6 +113,7 @@ namespace WorkplaceManagementSystem.Controllers
 
             _db.Info.Remove(infoFromDatabase);
             _db.SaveChanges();
+            TempData["success"] = "Employee Information Deleted Successfully";
             return RedirectToAction("Index");
         }
 

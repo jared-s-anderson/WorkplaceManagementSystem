@@ -45,6 +45,7 @@ namespace WorkplaceManagementSystem.Controllers
             {
                 _db.Tasks.Add(taskObject);
                 _db.SaveChanges();
+                TempData["success"] = "Task Added Successfully";
                 return RedirectToAction("Index");
             }
 
@@ -86,6 +87,7 @@ namespace WorkplaceManagementSystem.Controllers
                 _db.Tasks.Update(taskObject);
                 _db.Entry(taskObject).Property(x => x.TaskDate).IsModified = false;
                 _db.SaveChanges();
+                TempData["success"] = "Task Updated Successfully";
                 return RedirectToAction("Index");
             }
 
@@ -125,6 +127,7 @@ namespace WorkplaceManagementSystem.Controllers
 
             _db.Tasks.Remove(taskFromDatabase);
             _db.SaveChanges();
+            TempData["success"] = "Task Deleted Successfully";
             return RedirectToAction("Index");
         }
     }

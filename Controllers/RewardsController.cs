@@ -40,6 +40,7 @@ namespace WorkplaceManagementSystem.Controllers
             {
                 _db.Rewards.Add(rewardObject);
                 _db.SaveChanges();
+                TempData["success"] = "Reward Added Successfully";
                 return RedirectToAction("Index");
             }
 
@@ -80,6 +81,7 @@ namespace WorkplaceManagementSystem.Controllers
             {
                 _db.Rewards.Update(rewardObject);
                 _db.SaveChanges();
+                TempData["success"] = "Task Updated Successfully";
                 return RedirectToAction("Index");
             }
 
@@ -118,6 +120,7 @@ namespace WorkplaceManagementSystem.Controllers
 
             _db.Rewards.Remove(rewardFromDatabase);
             _db.SaveChanges();
+            TempData["success"] = "Task Deleted Successfully";
             return RedirectToAction("Index");
         }
     }
