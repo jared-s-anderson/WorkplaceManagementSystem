@@ -12,7 +12,7 @@ namespace WorkplaceManagementSystem.Models
     public class EmployeeTasks
     {
         [Key]
-        public int Id { get; set; }
+        public int TaskId { get; set; }
 
         [Required]
         [DisplayName("Task Name")]
