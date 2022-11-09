@@ -10,24 +10,20 @@ namespace WorkplaceManagementSystem.Controllers
     public class RolesController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
-        //private readonly ApplicationDbContext _db;
-
-       // public RolesController(RoleManager<IdentityRole> roleManager, ApplicationDbContext db) : this(roleManager)
-        //{
-       //     _db = db;
-       // }
 
         public RolesController(RoleManager<IdentityRole> roleManager)
         {
             _roleManager = roleManager;
         }
 
+        [Authorize(Roles = "Administrator, Manager")]
         public IActionResult Index()
         {
             var roles = _roleManager.Roles;
             return View(roles);
         }
 
+        [Authorize(Roles = "Administrator, Manager")]
         public IActionResult Create()
         {
             return View();
@@ -35,7 +31,8 @@ namespace WorkplaceManagementSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(RoleViewModel model)
+        [Authorize(Roles = "Administrator, Manager")]
+        public async Task<IActionResult> Create(RolesViewModel model)
         {
             if (ModelState.IsValid)
             {

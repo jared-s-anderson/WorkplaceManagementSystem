@@ -2,7 +2,7 @@
 
 namespace WorkplaceManagementSystem.Models
 {
-    public class RoleViewModel
+    public class RolesViewModel
     {
         [Required]
         [Display(Name = "Role Name")]
