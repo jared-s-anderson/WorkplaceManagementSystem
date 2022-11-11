@@ -20,7 +20,7 @@
                 <tr>
                     <td>@role.Name</td>
                     <td class="text-center">
-                        <a href="#" class="btn btn-primary">Edit</a>
+                        <a asp-controller="Roles" asp-action="Edit" asp-route-id="@role.Id" class="btn btn-primary mx-2">Edit</a>
                         <a href="#" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>

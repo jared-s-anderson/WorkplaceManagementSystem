@@ -1,0 +1,51 @@
+﻿@model WorkplaceManagementSystem.Models.EditRolesViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form method="post">
+    <div class="border p-2 mt-3">
+        <div class="row pb-2">
+            <h2 class="text-primary">Edit Role</h2>
+            <hr />
+            <div asp-validation-summary="All"></div>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Id">Id</label>
+            <input asp-for="Id" class="form-control" disabled/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="RoleName">Name</label>
+            <input asp-for="RoleName" class="form-control" />
+            <span asp-validation-for="RoleName" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" stlye="width:150px">Update</button>
+        <a asp-controller="Roles" asp-action="Index" class="btn btn-secondary" style="width:150px">Return to Roles</a>
+    </div>
+    <div class="mb-3">
+        <h3>Users with @Model.RoleName role</h3>
+        <table class="table table-bordered table-striped" style="width:100%">
+                <tr></tr>
+                @if (Model.Users.Any())
+                {
+                    foreach (var user in Model.Users)
+                    {
+                        <tr>
+                            <td class="form-label">@user</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td class="formlabel">There are no users with @Model.RoleName roles.</td>
+                    </tr>
+                }
+        </table>
+        <div>
+            <a asp-controller="UserRoles" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Add/Remove User from Role</a>
+        </div>
+    </div>
+</form>
