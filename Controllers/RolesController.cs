@@ -19,14 +19,14 @@ namespace WorkplaceManagementSystem.Controllers
             _userManager = userManager;
         }
 
-        [Authorize(Roles = "Administrator, Manager")]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Index()
         {
             var roles = _roleManager.Roles;
             return View(roles);
         }
 
-        [Authorize(Roles = "Administrator, Manager")]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
@@ -34,7 +34,7 @@ namespace WorkplaceManagementSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator, Manager")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Create(RolesViewModel model)
         {
             if (ModelState.IsValid)
@@ -48,6 +48,13 @@ namespace WorkplaceManagementSystem.Controllers
 
                 if (result.Succeeded)
                 {
+                    TempData["success"] = "Role Created Successfully";
+                    return RedirectToAction("Index");
+                }
+
+                else
+                {
+                    TempData["failure"] = "Role Not Created";
                     return RedirectToAction("Index");
                 }
             }
@@ -56,6 +63,7 @@ namespace WorkplaceManagementSystem.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(string? id)
         {
             var roles = await _roleManager.FindByIdAsync(id);
@@ -86,6 +94,7 @@ namespace WorkplaceManagementSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(EditRolesViewModel model)
         {
             var roles = await _roleManager.FindByIdAsync(model.Id);
@@ -102,7 +111,12 @@ namespace WorkplaceManagementSystem.Controllers
 
                 if (result.Succeeded)
                 {
+                    TempData["success"] = "Role Updated Successfully";
                     return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["failure"] = "Role Not Updated";
                 }
             }
 
@@ -110,6 +124,7 @@ namespace WorkplaceManagementSystem.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> EditUserRoles(string? id)
         {
             var roles = await _roleManager.FindByIdAsync(id);
@@ -149,6 +164,8 @@ namespace WorkplaceManagementSystem.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> EditUserRoles(List<UserRolesModel> model, string? id)
         {
             var roles = await _roleManager.FindByIdAsync(id);
@@ -178,8 +195,48 @@ namespace WorkplaceManagementSystem.Controllers
                 }
             }
 
+            TempData["success"] = "User Roles Updated Successfully";
             return RedirectToAction("Index");
 
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> Delete(string? id)
+        {
+            var roles = await _roleManager.FindByIdAsync(id);
+
+            return View(roles);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> DeletePOST(string? id)
+        {
+            var roles = await _roleManager.FindByIdAsync(id);
+            
+            if (roles == null)
+            {
+                return NotFound();
+            }
+
+            else
+            {
+                var result = await _roleManager.DeleteAsync(roles);
+
+                if (result.Succeeded)
+                {
+                    TempData["success"] = "Role Deleted Successfully";
+                    return RedirectToAction("Index");
+                } 
+                else
+                {
+                    TempData["failure"] = "Role Not Deleted";
+                }
+
+                return View(roles);
+            }
         }
     }
 }

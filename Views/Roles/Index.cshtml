@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @model IEnumerable<IdentityRole>
 
-<h1>Roles</h1>
+<h1>Role Management</h1>
 <a class="btn btn-primary mb-3" asp-action="Create">Add Role</a>
 
 @if (Model.Any())
@@ -9,7 +9,7 @@
     <table class="table col-3">
         <thead>
             <tr>
-                <td><h3>Role</h3></td>
+                <td><h3>Roles</h3></td>
                 <td></td>
 
             </tr>
@@ -21,7 +21,7 @@
                     <td>@role.Name</td>
                     <td class="text-center">
                         <a asp-controller="Roles" asp-action="Edit" asp-route-id="@role.Id" class="btn btn-primary mx-2">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
+                        <a asp-controller="Roles" asp-action="Delete" asp-route-id="@role.Id" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             </tbody>

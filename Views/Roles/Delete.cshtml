@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IdentityRole
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>You are about to delete the role of "@Model.Name"</h2>
+<h6 class="text-danger">This action cannot be undone</h6>
+
+<form method="post" asp-action="DeletePOST" asp-route-id=@Model.Id>
+    <input asp-for="Id" hidden />
+    <div class="border p-2 mt-3">
+        <button type="submit" class="btn btn-danger" stlye="width:150px">Delete</button>
+        <a asp-controller="Roles" asp-action="Index" class="btn btn-secondary" style="width:150px">Return to Roles</a>
+    </div>
+</form>
