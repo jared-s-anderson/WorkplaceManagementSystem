@@ -10,7 +10,7 @@
 <form method="post" asp-action="DeletePOST" asp-route-id=@Model.Id>
     <input asp-for="Id" hidden />
     <div class="border p-2 mt-3">
-        <button type="submit" class="btn btn-danger" stlye="width:150px">Delete</button>
-        <a asp-controller="Roles" asp-action="Index" class="btn btn-secondary" style="width:150px">Return to Roles</a>
+        <button type="submit" class="btn btn-danger mx-2"><i class="bi bi-x-circle"></i> &nbsp; Delete</button>
+        <a asp-controller="Roles" asp-action="Index" class="btn btn-secondary"><i class="bi bi-arrow-return-right"></i> &nbsp; Roles</a>
     </div>
 </form>

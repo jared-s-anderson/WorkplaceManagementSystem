@@ -21,8 +21,8 @@
             <input asp-for="RoleName" class="form-control" />
             <span asp-validation-for="RoleName" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary" stlye="width:150px">Update</button>
-        <a asp-controller="Roles" asp-action="Index" class="btn btn-secondary" style="width:150px">Return to Roles</a>
+        <button type="submit" class="btn btn-primary mx-2"><i class="bi bi-check2-circle"></i> &nbsp; Update</button>
+        <a asp-controller="Roles" asp-action="Index" class="btn btn-secondary"><i class="bi bi-arrow-return-right"></i> &nbsp; Roles</a>
     </div>
     <div class="mb-3">
         <h3>Users with @Model.RoleName role</h3>
@@ -45,7 +45,7 @@
                 }
         </table>
         <div>
-            <a asp-controller="Roles" asp-action="EditUserRoles" asp-route-id="@Model.Id" class="btn btn-primary">Add/Remove User from Role</a>
+            <a asp-controller="Roles" asp-action="EditUserRoles" asp-route-id="@Model.Id" class="btn btn-primary"><i class="bi bi-plus-slash-minus"></i> &nbsp; Edit User Roles</a>
         </div>
     </div>
 </form>
