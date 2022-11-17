@@ -5,7 +5,7 @@ namespace WorkplaceManagementSystem.Models
     public class EmployeeInfo
     {
         [Key]
-        public int EmployeeId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }

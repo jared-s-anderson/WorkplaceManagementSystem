@@ -6,7 +6,7 @@ namespace WorkplaceManagementSystem.Models
     public class Rewards
     {
         [Key]
-        public int RewardId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Reward { get; set; }

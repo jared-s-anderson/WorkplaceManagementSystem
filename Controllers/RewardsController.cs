@@ -18,8 +18,15 @@ namespace WorkplaceManagementSystem.Controllers
         [Authorize(Roles = "Administrator")]
         public IActionResult Index()
         {
-            IEnumerable<Rewards> rewards = _db.Rewards;
-            return View(rewards);
+            var rewards = _db.Rewards.ToList();
+            var info = _db.Info.ToList();
+            var rewardInfo = new RewardInfo
+            {
+                Rewards = rewards,
+                Info = info
+            };
+            //IEnumerable<Rewards> rewards = _db.Rewards;
+            return View(rewardInfo);
         }
 
         // GET
