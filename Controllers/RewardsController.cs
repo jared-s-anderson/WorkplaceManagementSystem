@@ -43,6 +43,11 @@ namespace WorkplaceManagementSystem.Controllers
         public IActionResult Create(Rewards rewardObject)
         {
 
+            if (rewardObject.Reward == rewardObject.RewardDescription)
+            {
+                ModelState.AddModelError("Custom Error", "The reward name cannot be the same as the reward description.");
+            }
+
             if (ModelState.IsValid)
             {
                 _db.Rewards.Add(rewardObject);
