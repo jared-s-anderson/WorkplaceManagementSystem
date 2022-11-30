@@ -1,0 +1,23 @@
+﻿@model UserFeedback
+
+<form action="https://formsubmit.co/wms@tech-center.com" method="post">
+    <div class="border p-2 mt-3">
+        <div class="row pb-2">
+            <h2 class="text-primary">Give Feedback</h2>
+            <hr />
+            <h4>Please be as honest as possible. We value your feedback.</h4>
+            <div asp-validation-summary="All"></div>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email">Your Email</label>
+            <input asp-for="Email" type="email" class="form-control" placeholder="Your Email Address..." required/>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Feedback">Your Feedback</label>
+            <textarea asp-for="Feedback" type="text" class="form-control" cols="3" rows="5" placeholder="This application is..." required></textarea>
+            <span asp-validation-for="Feedback" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary mx-2">Send</button>
+    </div>
+</form>
