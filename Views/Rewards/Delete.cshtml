@@ -1,5 +1,9 @@
 ﻿@model Rewards
 
+@{
+    ViewData["Title"] = "Delete Reward";
+}
+
 <form method="post" asp-action="DeletePOST">
     <input asp-for="Id" hidden />
     <div class="border p-2 mt-3">

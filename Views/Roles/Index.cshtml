@@ -1,6 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @model IEnumerable<IdentityRole>
 
+@{
+    ViewData["Title"] = "Roles";
+}
+
 <h1>Role Management</h1>
 <a class="btn btn-primary mb-3" asp-action="Create"><i class="bi bi-plus-circle"></i> &nbsp; Add Role</a>
 
