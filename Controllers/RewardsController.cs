@@ -15,7 +15,7 @@ namespace WorkplaceManagementSystem.Controllers
             _db = db;
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Employee")]
         public IActionResult Index()
         {
             var rewards = _db.Rewards.ToList();
