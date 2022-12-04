@@ -12,6 +12,7 @@ namespace WorkplaceManagementSystem.Data
         {
         }
 
+        // I added these three database sets to my Management database.
         public DbSet<EmployeeTasks> Tasks { get; set; }
         public DbSet<EmployeeInfo> Info { get; set; }
         public DbSet<Rewards> Rewards { get; set; }
