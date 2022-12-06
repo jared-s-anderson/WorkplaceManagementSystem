@@ -15,7 +15,7 @@
         {
             <div class="mb-3">
                 <label asp-for="TaskName">Task</label>
-                <input asp-for="TaskName" class="form-control"/>
+                <input asp-for="TaskName" type="text" class="form-control" required/>
                 <span asp-validation-for="TaskName" class="text-danger"></span>
             </div>
         } else 
@@ -30,7 +30,7 @@
         {
             <div class="mb-3">
                 <label asp-for="TaskDescription">Description</label>
-                <input asp-for="TaskDescription" class="form-control" />
+                <input asp-for="TaskDescription" type="text" class="form-control" required/>
                 <span asp-validation-for="TaskDescription" class="text-danger"></span>
             </div>
         } else {

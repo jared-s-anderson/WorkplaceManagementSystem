@@ -13,17 +13,17 @@
         </div>
         <div class="mb-3">
             <label asp-for="TaskName">Task</label>
-            <input asp-for="TaskName" class="form-control"/>
+            <input asp-for="TaskName" type="text" class="form-control" required/>
             <span asp-validation-for="TaskName" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="TaskDescription">Description</label>
-            <input asp-for="TaskDescription" class="form-control" />
+            <input asp-for="TaskDescription" type="text" class="form-control" required/>
             <span asp-validation-for="TaskDescription" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="TaskDate">Creation Date</label>
-            <input asp-for="TaskDate" class="form-control" />
+            <input asp-for="TaskDate" type="date" class="form-control" required/>
             <span asp-validation-for="TaskDate" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary mx-2"><i class="bi bi-plus-circle"></i> &nbsp; Add Task</button>

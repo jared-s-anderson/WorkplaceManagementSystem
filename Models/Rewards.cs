@@ -12,6 +12,7 @@ namespace WorkplaceManagementSystem.Models
         public string Reward { get; set; }
 
         [Required]
+        [Display(Name = "Reward Description" )]
         public string RewardDescription { get; set; }
 
     }
